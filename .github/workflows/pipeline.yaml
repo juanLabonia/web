@@ -9,8 +9,8 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Comienzan los RUN solo si la rama es develop"
-      if: "${{ actor == 'juanLabonia' }}"
-      run: |
+      run: echo "Aca hay que poner un if, luego ver como se hace"
+    - run: |
         echo "Hola mundo en mi propio runner" \
         "Ahora sale el echo con dos lineas" \
         "El echo anterior no surte efecto"
