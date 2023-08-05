@@ -8,8 +8,8 @@ jobs:
   hello_word:
     runs-on: self-hosted
     steps:
-    - name: Echo del mensaje
+    - name: Comienzan los RUN
       run: |
-        echo "Hola mundo en mi propio runner"
-        $time = date
-        echoh $time
+        echo "Hola mundo en mi propio runner" \
+        echo "Ahora sale el echo con dos lineas"
+    - run: date \ echo "<- Fecha"
