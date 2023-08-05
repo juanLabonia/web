@@ -11,3 +11,5 @@ jobs:
     - name: Echo del mensaje
       run: |
         echo "Hola mundo en mi propio runner"
+        $time = date
+        echoh $time
