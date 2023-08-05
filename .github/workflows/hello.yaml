@@ -11,5 +11,7 @@ jobs:
     - name: Comienzan los RUN
       run: |
         echo "Hola mundo en mi propio runner" \
-        echo "Ahora sale el echo con dos lineas"
-    - run: date && echo "<- Fecha"
+        "Ahora sale el echo con dos lineas" \
+        "El echo anterior no surte efecto"
+    - run: echo "La hora de ejecucion es:"
+    - run: date
