@@ -10,4 +10,4 @@ jobs:
     steps:
     - name: Echo del mensaje
       run: |
-        echo "Hola mundo 2!"
+        echo "Hola mundo en mi propio runner"
