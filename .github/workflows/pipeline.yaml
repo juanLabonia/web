@@ -1,0 +1,17 @@
+name: Primer hello
+
+on:
+  push:
+    branches:
+    - dev
+jobs:
+  hello_word:
+    runs-on: self-hosted
+    steps:
+    - name: Comienzan los RUN
+      run: |
+        echo "Hola mundo en mi propio runner" \
+        "Ahora sale el echo con dos lineas" \
+        "El echo anterior no surte efecto"
+    - run: echo "La hora de ejecucion es:"
+    - run: date
