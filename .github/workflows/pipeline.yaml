@@ -8,7 +8,8 @@ jobs:
   hello_word:
     runs-on: self-hosted
     steps:
-    - name: Comienzan los RUN
+    - name: Comienzan los RUN solo si la rama es develop"
+      if: "${{ actor.login\t == 'juanLabonia' }}"
       run: |
         echo "Hola mundo en mi propio runner" \
         "Ahora sale el echo con dos lineas" \
