@@ -17,7 +17,7 @@ RUN git clone https://github.com/juanLabonia/web.git /tmp/temp_repo
 RUN cp -r /tmp/temp_repo/virtualHost/101si/. .
 
 # Configuracion de nginx
-COPY /tmp/temp_repo/default.conf /etc/nginx/http.d/default.conf
+RUN cp /tmp/temp_repo/default.conf /etc/nginx/http.d/default.conf
 
 # Se exponen los puertos 80 / 443
 EXPOSE 80
