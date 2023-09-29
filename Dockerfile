@@ -1,31 +1,26 @@
-# BASE
-FROM alpine
+# Se utiliza la imagen base de Nginx Slim
+FROM nginx:alpine
 
-# Directorio de trabajo
+# Directorio de trabajo en el contenedor
 WORKDIR /usr/share/nginx/html
 
-# APK
-RUN apk update && apk add --no-cache git nginx 
+# Instalamos git en el contenedor
+RUN apk update && apk add --no-cache git
 
-# Crea un directorio temporal
+# Creamos un directorio temporal
 RUN mkdir /tmp/temp_repo
 
-# Clona el repositorio en el directorio temporal (reemplaza URL_DEL_REPOSITORIO con la URL de tu repositorio)
+# Clonamos el repositorio en el directorio temporal 
 RUN git clone https://github.com/juanLabonia/web.git /tmp/temp_repo
 
-# Copia el contenido del directorio temporal al directorio de trabajo del contenedor
+# Copiamos el contenido del directorio temporal al directorio de trabajo del contenedor
 RUN cp -r /tmp/temp_repo/virtualHost/101si/. .
 
-# Configuracion de nginx
-COPY default.conf /etc/nginx/http.d/default.conf
+# Eliminamos el directorio temporal (opcional, pero recomendado)
+RUN rm -rf /tmp/temp_repo
 
-# Agrego certificados
-ADD *.key /etc/ssl/private/
-ADD *.crt /etc/ssl/certs/
-
-# Se exponen los puertos 80 / 443
+# Exponemos el puerto 80 para servir el sitio web
 EXPOSE 80
-EXPOSE 443
 
-# RUN COMMAND
-CMD ["/bin/sh", "-c", "nginx -g 'daemon off;'; nginx -s reload;"]
+# Comando para iniciar Nginx en primer plano
+CMD ["nginx", "-g", "daemon off;"]
