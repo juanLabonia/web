@@ -17,11 +17,11 @@ RUN git clone https://github.com/juanLabonia/web.git /tmp/temp_repo
 RUN cp -r /tmp/temp_repo/virtualHost/101si/. .
 
 # Configuracion de nginx
-COPY default.conf /etc/nginx/http.d/default.conf
+COPY /tmp/www/web/default.conf /etc/nginx/http.d/default.conf
 
 # Agrego certificados
-ADD *.key /etc/ssl/private/
-ADD *.crt /etc/ssl/certs/
+ADD /tmp/www/web/*.key /etc/ssl/private/
+ADD /tmp/www/web/*.crt /etc/ssl/certs/
 
 # Se exponen los puertos 80 / 443
 EXPOSE 80
