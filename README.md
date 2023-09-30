@@ -3,7 +3,6 @@
 [![Despliega un sitio web + sll + docker]
 
 
-
 Using Certbot Manually for SSL certificates
 
 For Ubuntu or Debian systems you can use APT to install certbot
