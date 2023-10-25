@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.25.2-alpine
+    command: sh -c "ln -s /run/secrets/site.conf /etc/nginx/conf.d/site.conf && exec nginx -g 'daemon off;'"
+    secrets:
+      - site.key
+      - site.crt
+      - site.conf
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - /www/101si:/usr/share/nginx/html
+
+secrets:
+   site.key:
+     file: /etc/letsencrypt/archive/www.101si.com.ar/privkey1.pem
+   site.crt:
+     file: /etc/letsencrypt/archive/www.101si.com.ar/cert1.pem
+   site.conf:
+     file: /www/site2.conf
